@@ -1,4 +1,4 @@
-import { fullBlog, BlockType, YouTubeType } from "@/app/lib/interface"; // Assuming you have interface definitions for BlockType and YouTubeType
+import { fullBlog } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
@@ -36,7 +36,7 @@ export default async function BlogArticle({
   };
 
   // Render each content item based on its type
-  const renderContent = (content: (BlockType | YouTubeType)[]) => {
+  const renderContent = (content: any[]) => {
     return content.map((item, index) => {
       switch (item._type) {
         case "block":
