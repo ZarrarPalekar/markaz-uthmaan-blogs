@@ -29,10 +29,23 @@ export default async function BlogArticle({
   const data: fullBlog = await getData(params.slug);
 
   const getYouTubeVideoId = (url: string) => {
-    const match = url.match(
+    const videoIdMatch = url.match(
       /(?:\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/
     );
-    return match ? match[1] : null;
+    const timestampMatch = url.match(/(?:[?&]t=)(\d+h)?(\d+m)?(\d+s)?/);
+
+    const videoId = videoIdMatch ? videoIdMatch[1] : null;
+
+    let timestamp = null;
+    if (timestampMatch) {
+      const [, hours, minutes, seconds] = timestampMatch;
+      timestamp =
+        (parseInt(hours) || 0) * 3600 +
+        (parseInt(minutes) || 0) * 60 +
+        (parseInt(seconds) || 0);
+    }
+
+    return { videoId, timestamp };
   };
 
   // Render each content item based on its type
@@ -43,10 +56,12 @@ export default async function BlogArticle({
           return <PortableText key={index} value={item} />;
         case "youtube":
           // Extract video ID from the URL
-          const videoId = getYouTubeVideoId(item.url);
+          const { videoId, timestamp } = getYouTubeVideoId(item.url);
           if (videoId) {
-            // Construct embed URL
-            const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            let embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            if (timestamp) {
+              embedUrl += `?start=${timestamp}`;
+            }
             return (
               <div key={index} className="youtube-container">
                 <iframe
@@ -97,9 +112,18 @@ export default async function BlogArticle({
         </span>
       </h1>
 
-      {data.titleImage && (
+      {data.titleImage ? (
         <Image
           src={urlFor(data.titleImage).url()}
+          width={800}
+          height={800}
+          alt="Title Image"
+          priority
+          className="rounded-lg mt-8 border"
+        />
+      ) : (
+        <Image
+          src={"/banner.webp"}
           width={800}
           height={800}
           alt="Title Image"

@@ -29,9 +29,17 @@ export default async function Home() {
       {data.map((post, idx) => (
         <Card key={idx} className="flex flex-col h-full">
           <div className="flex-1">
-            {post.titleImage && (
+            {post.titleImage ? (
               <Image
                 src={urlFor(post.titleImage).url()}
+                alt="image"
+                width={500}
+                height={500}
+                className="rounded-t-lg h-[200px] object-cover"
+              />
+            ) : (
+              <Image
+                src={"/banner.webp"}
                 alt="image"
                 width={500}
                 height={500}
