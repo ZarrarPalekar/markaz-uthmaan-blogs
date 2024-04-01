@@ -95,8 +95,10 @@ export default async function BlogArticle({
       <div className="flex justify-between mb-4">
         <Link href="/">← Back to Home Page</Link>
       </div>
-      <h1 className="mt-10">
-        <span className="block text-base text-center font-semibold tracking-wide flex justify-between">
+      <h1 className="mt-10 text-center sm:text-left">
+        {" "}
+        {/* Align text left on small screens */}
+        <span className="block text-sm sm:text-base text-center font-semibold tracking-wide flex justify-between">
           <span>
             Author:{" "}
             <span className="text-primary uppercase">{data.author}</span>
@@ -106,8 +108,9 @@ export default async function BlogArticle({
             <span className="text-primary uppercase">{formattedDate}</span>
           </span>
         </span>
-
-        <span className="mt-10 block text-3xl text-center leading-8 font-bold tracking-tight sm:text-4xl">
+        <span className="mt-10 block text-2xl sm:text-3xl text-center leading-8 font-bold tracking-tight">
+          {" "}
+          {/* Adjust text size for smaller screens */}
           {data.title}
         </span>
       </h1>
