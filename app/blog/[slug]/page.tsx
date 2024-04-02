@@ -1,7 +1,7 @@
 import { fullBlog } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
-import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export const revalidate = 30; // revalidate at most 30 seconds
@@ -85,27 +85,27 @@ export default async function BlogArticle({
   };
 
   const publishedDate = new Date(data.publishedAt);
-  const formattedDate = `${publishedDate.getDate()}/${publishedDate.toLocaleString(
+  const formattedDate = `${publishedDate.getDate()}-${publishedDate.toLocaleString(
     "default",
     { month: "short" }
-  )}/${publishedDate.getFullYear()}`;
+  )}-${publishedDate.getFullYear()}`;
 
   return (
     <div className="mt-8 mb-8">
       <div className="flex justify-between mb-4">
-        <Link href="/">← Back to Home Page</Link>
+        <Link href="/">
+          <ArrowLeft />
+        </Link>
       </div>
       <h1 className="mt-10 text-center sm:text-left">
         {" "}
         {/* Align text left on small screens */}
         <span className="block text-sm sm:text-base text-center font-semibold tracking-wide flex justify-between">
           <span>
-            Author:{" "}
-            <span className="text-primary uppercase">{data.author}</span>
+            <span className="text-primary">{data.author}</span>
           </span>
           <span>
-            Published:{" "}
-            <span className="text-primary uppercase">{formattedDate}</span>
+            <span className="text-primary">{formattedDate}</span>
           </span>
         </span>
         <span className="mt-10 block text-2xl sm:text-3xl text-center leading-8 font-bold tracking-tight">

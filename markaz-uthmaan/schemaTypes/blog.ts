@@ -60,6 +60,6 @@ export default {
   ],
   initialValue: {
     publishedAt: new Date().toISOString(),
-    author: 'Shaykh Aadam',
+    author: 'Shaykh Abu Remlah Aadam Al-Amreekee',
   },
 }
