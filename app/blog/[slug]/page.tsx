@@ -111,7 +111,7 @@ export default async function BlogArticle({
         <span className="mt-10 block text-2xl sm:text-3xl text-center leading-8 font-bold tracking-tight">
           {" "}
           {/* Adjust text size for smaller screens */}
-          {data.title.charAt(0).toUpperCase() + data.title.slice(1)}
+          {data.title}
         </span>
       </h1>
 
