@@ -115,17 +115,6 @@ export default async function BlogArticle({
         </span>
       </h1>
 
-      {data.titleImage && (
-        <Image
-          src={urlFor(data.titleImage).url()}
-          width={800}
-          height={800}
-          alt="Title Image"
-          priority
-          className="rounded-lg mt-8 border"
-        />
-      )}
-
       <div className="mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
         {renderContent(data.content)}
       </div>
