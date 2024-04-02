@@ -115,18 +115,9 @@ export default async function BlogArticle({
         </span>
       </h1>
 
-      {data.titleImage ? (
+      {data.titleImage && (
         <Image
           src={urlFor(data.titleImage).url()}
-          width={800}
-          height={800}
-          alt="Title Image"
-          priority
-          className="rounded-lg mt-8 border"
-        />
-      ) : (
-        <Image
-          src={"/banner.webp"}
           width={800}
           height={800}
           alt="Title Image"
