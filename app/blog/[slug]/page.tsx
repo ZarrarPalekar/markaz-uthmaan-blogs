@@ -100,12 +100,14 @@ export default async function BlogArticle({
       <h1 className="mt-10 text-center sm:text-left">
         {" "}
         {/* Align text left on small screens */}
-        <span className="block text-sm sm:text-base text-center font-semibold tracking-wide flex justify-between">
+        <span className="block text-sm sm:text-base text-center font-semibold tracking-wide flex justify-between mb-2">
           <span>
-            <span className="text-primary">{data.author}</span>
+            Author: <span className="text-primary">{data.author}</span>
           </span>
+        </span>
+        <span className="block text-sm sm:text-base text-center font-semibold tracking-wide flex justify-between mb-2">
           <span>
-            <span className="text-primary">{formattedDate}</span>
+            Published: <span className="text-primary">{formattedDate}</span>
           </span>
         </span>
         <span className="mt-10 block text-2xl sm:text-3xl text-center leading-8 font-bold tracking-tight">
