@@ -110,7 +110,7 @@ export default async function BlogArticle({
             Published: <span className="text-primary">{formattedDate}</span>
           </span>
         </span>
-        <span className="mt-10 block text-2xl sm:text-3xl text-center leading-8 font-bold tracking-tight">
+        <span className="mt-10 block text-2xl sm:text-3xl text-left leading-8 font-bold tracking-tight">
           {" "}
           {/* Adjust text size for smaller screens */}
           {data.title}
